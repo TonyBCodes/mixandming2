@@ -1,0 +1,159 @@
+﻿
+.cust-about-form {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border: 25px solid #333;
+    box-shadow: 2.5px 4.3px 20px rgba(0, 0, 0, 0.4);
+    background: #fff url("../img/home1/about_bg.png") 0 0 no-repeat;
+    background-size: cover;
+    margin-left: 55px;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+    .cust-about-form h3 {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 28px;
+        text-transform: uppercase;
+        color: #c7a75b;
+        padding-bottom: 20px;
+    }
+
+        .cust-about-form h3 i {
+            color: #333;
+        }
+
+    .cust-about-form span {
+        word-spacing: 2px;
+        display: inline-block;
+        max-width: 340px;
+        color: #666;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+
+    .cust-about-form form {
+        display: inline-block;
+        margin-top: 30px;
+        margin-left:5px;
+        margin-right:5px;
+    }
+
+    .cust-about-form input::-webkit-input-placeholder, .cust-about-form textarea::-webkit-input-placeholder,
+    .cust-about-form input::-moz-placeholder, .cust-about-form textarea::-moz-placeholder {
+        color: #888;
+    }
+
+    .cust-about-form input, .cust-about-form textarea {
+        border-radius: 0;
+        color: #888;
+        font-family: 'Droid Serif', serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1;
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 15px 20px;
+        outline: none;
+        border: 1px solid #888;
+    }
+
+    .cust-about-form textarea {
+        width: 100%;
+        max-width: 570px;
+        height: 145px;
+    }
+
+    .cust-about-form .two_col {
+        width: 175px;
+    }
+
+        .cust-about-form .two_col:nth-child(2) {
+            margin: 0 18px;
+        }
+
+    .cust-about-form .three_col {
+        width: 275px;
+        margin-right: 15px;
+    }
+
+    .cust-about-form .three_col1 {
+        width: 275px;
+    }
+
+    .cust-about-form button {
+        border: 2px solid #c7a75b;
+        color: #c7a75b;
+        font-family: 'Droid Serif', serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 30px;
+        background: transparent;
+        line-height: 45px;
+        padding: 0 148px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0px auto 60px;
+        -webkit-transition: all 0.35s ease-in;
+        transition: all 0.35s ease-in;
+    }
+
+        .cust-about-form button:hover {
+            background: #c7a75b;
+            color: #fff;
+        }
+
+.max1024w{
+    max-width:1024px;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.colorblack{
+    background-color:#333;
+}
+
+.menulogo{
+    height:auto;
+    width:auto;
+}
+
+.modalfeat{
+margin-left:auto;
+margin-right:auto;
+margin-top:auto;
+margin-bottom:auto;
+min-width:600px;
+width:50%;
+height:auto;
+max-height:400px;
+background-color:darkgray;
+padding:10px;
+}
+
+.rowcenter {
+    margin: 0;
+    position: relative;
+
+}
