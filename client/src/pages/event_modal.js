@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import CocktailSearch from "../apis/cocktails_api"
 
 
 class EventModal extends Component {
@@ -19,7 +20,6 @@ class EventModal extends Component {
                         <div className="row">
                             <input type="text" placeholder='Drink Name' className="col-md-10 pad-lg-0 " />
                             <input type="text" placeholder='Drink Ingredient' className="col-md-10 pad-lg-0 " />
-                            <input type="text" placeholder='Drink Glass' className="col-md-10 pad-lg-0 " />
                         </div>
                         <a href="" className="wpc-upcoming-reg">Search</a>
                     </div>

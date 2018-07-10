@@ -21,8 +21,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+//require("./routes/html-routes.js")(app);
+require("./routes/cust-auth")(app);
+require("./routes/user-auth")(app);
+require("./routes/cocktaildb-api-routes")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs

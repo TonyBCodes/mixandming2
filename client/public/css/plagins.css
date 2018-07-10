@@ -4700,7 +4700,7 @@ button.close {
 .modal {
   position: center;
   z-index: 1050;
-  display: none;
+  display: block;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0; }

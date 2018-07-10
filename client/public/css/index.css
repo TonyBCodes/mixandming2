@@ -214,7 +214,7 @@ html.active {
   width: 100%;
   background: #fff;
   text-align: center;
-  z-index: 999; }
+  z-index: 2; }
   .wpc-header-menu .menu-item a.active {
     color: #c7a75b; }
     .wpc-header-menu .menu-item a.active:after {

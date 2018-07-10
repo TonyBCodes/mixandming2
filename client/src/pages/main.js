@@ -17,7 +17,7 @@ const Main = () => (
             <Route exact path='/usr_login' component={UserLogin} />
             <Route exact path='/usr_register' component={UserRegister} />
             <Route exact path='/cust_start' component={CustStart} />
-            <Route exact path='/cust_info' component={CustInfo} />
+            <Route exact path='/cust_info:email' component={CustInfo} />
             <Route exact path='/event_info' component={EventInfo} />
             <Route exact path='/event_modal' component={EventModal}/>
         </Switch>

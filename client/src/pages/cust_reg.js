@@ -1,14 +1,50 @@
 ﻿// JavaScript source code
 import React, { Component } from "react";
-//import API from "../utils/API";
+import { Redirect } from 'react-router-dom';
+import CLogin from "../apis/cust_login_api";
 
 class CustReg extends Component {
     state = {
         email: "",
-        password: "",
         message: "",
         isHidden: true
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        });
+    };
+
+    renderCustRegRedirect = () => {
+        return <Redirect to={'/cust_info' + this.state.email} />;
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        if (this.state.email) {
+            if (Clogin.checkforuser) {
+                //redirct to login page
+            }
+            else {
+                //redirect to register page
+                //send email as prop
+                this.renderCustRegRedirect;
+            }
+            API.registerUser({
+                firstName: this.state.firstName,
+                email: this.state.email,
+                password: this.state.password
+            }).then(res => {
+                // console.log(res);
+                this.props.history.push("/");
+            })
+                .catch(err => console.log(err));
+        };
+    };
+
+
 
 
     render() {
@@ -19,7 +55,7 @@ class CustReg extends Component {
                     <h3><i>Register</i></h3>
                     <span>Please register as a new customer.</span>
                     <form>
-                        <input type="email" placeholder='Email Address' className="six_col" />
+                        <input type="email" name="email" placeholder='Email Address' className="six_col" />
                         <br />
                         <button>Register</button>
                         {!this.state.isHidden && <textarea id="reg_msg">test</textarea>}
