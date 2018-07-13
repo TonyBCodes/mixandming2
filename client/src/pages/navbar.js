@@ -12,7 +12,7 @@ const Navbar = () => (
                     <div className="wpc-navigation">
                         <nav>
                             <ul className="main-menu">
-                                <li className="menu-item logo"><Link to="/"><img className="menulogo" src="./img/logo1.jpg" alt="Mix and Ming" /></Link></li>
+                                <li className="menu-item logo"><Link to="/"><img className="menulogo" src="/img/logo1.jpg" alt="Mix and Ming" /></Link></li>
                                 <li className="menu-item"> <Link to="/">Home</Link></li>
                                 <li className="menu-item"><a className="" href="">About Us</a></li>
                                 <li className="menu-item"><a className="" href="">Services</a></li>

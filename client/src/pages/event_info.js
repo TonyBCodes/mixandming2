@@ -2,13 +2,14 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
-import CocktailSearch from "../apis/cocktails_api"
 import { PowerSelect } from 'react-power-select'
+import { Redirect, withRouter } from 'react-router-dom';
+import axios from "axios"
 //import API from "../utils/API";
 
 class EventInfo extends Component {
     state = {
-        email: "",
+        email: null,
         event_name: "",
         event_date: "",
         event_start: "",
@@ -48,9 +49,10 @@ class EventInfo extends Component {
         message: "",
         isHidden: true,
         search_type: "",
-        search_value:""
+        search_value: "",
+        option_list:[]
     }
-
+    
     constructor() {
         super();
         this.state = {
@@ -58,6 +60,10 @@ class EventInfo extends Component {
         };
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    componentDidMount() {
+        this.ing_option_list();
     }
 
     handleOpenModal(event) {
@@ -72,10 +78,12 @@ class EventInfo extends Component {
     }
 
     ing_option_list() {
-        let drink_ing = CocktailSearch.ing_list;
-        console.log(drink_ing);
-        let drink_ing_arr = Object.values(drink_ing);
-        return drink_ing_arr;
+        axios.get("/api/ing_list").then(res => {
+            let drink_ing_arr = res.data.drinks.map(a => a.strIngredient1);
+            // let drink_ing_arr = Object.values(res.data.drinks);
+            console.log(drink_ing_arr);
+            this.setState({ option_list: drink_ing_arr });
+        }).catch(error => console.log(error) );
     }
 
     handleChange = ({ option }) => {
@@ -92,7 +100,7 @@ class EventInfo extends Component {
                         <div className="cust-about-form marg-lg-t140 marg-lg-b140 marg-sm-b50 marg-sm-t50">
                             <h3><i>Event Information</i></h3>
                             <div className="row">
-                                <h5>Email address:</h5>
+                                <h5>Logged in as: {this.state.email}</h5>
                             </div>
                             <br />
                             <div className="row">
@@ -185,7 +193,7 @@ class EventInfo extends Component {
                                         </div>
                                     </div>
                                     <br />
-                                    <div Classname="row">
+                                    <div className="row">
                                         <div className="dropdown">
                                             <input type="text" placeholder='Address Line 1' className="dropdown col-md-10 pad-lg-0 " />
                                             <div className="dropdown-content">
@@ -222,14 +230,16 @@ class EventInfo extends Component {
                             <div className="col-md-4 ">
                                 <div className="row">
                                     <input type="text" placeholder='Drink Name' className="col-md-10 pad-lg-0 " />
+                                    <a href="" id= "namesearch" className="wpc-upcoming-reg">Search</a>
                                     <input type="text" placeholder='Ingredient Name' className="col-md-10 pad-lg-0 " />
+                                    <a href="" id="ingsearch" className="wpc-upcoming-reg">Search</a>
                                 </div>
                                 <PowerSelect
-                                    options={this.ing_option_list}
+                                    options={this.state.option_list}
                                     selected={this.state.selectedOption}
                                     onChange={this.handleChange}
                                 />
-                                <a href="" className="wpc-upcoming-reg">Search</a>
+                                
                             </div>
                             <div className="col-md-1 " />
                             <div className="col-md-6 ">

@@ -1,8 +1,8 @@
 // JavaScript source code
 
 import React, { Component } from "react";
-import usrAPI from "../apis/usr_data_api";
-import PasswordMask from 'react-password-mask';
+//import usrAPI from "../apis/usr_data_api";
+//import PasswordMask from 'react-password-mask';
 
 class UserRegister extends Component {
     state = {
@@ -64,7 +64,7 @@ class UserRegister extends Component {
                 usr_last_login: null,
                 usr_status:"active"
             }
-            usrAPI.registerUser(newUser);
+            //usrAPI.registerUser(newUser);
         }
 
         else {

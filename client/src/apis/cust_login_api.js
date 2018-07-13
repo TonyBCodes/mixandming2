@@ -16,4 +16,7 @@ export default {
     logoutUser: function () {
         return axios.get("/auth/logout/");
     },
+    checkforuser: function (email) {
+        return false;
+    }
 };

@@ -107,8 +107,10 @@ module.exports = (sequelize, Sequelize) => {
 
 
     // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-    Customer.prototype.validPassword = (password) => {
-        return bcrypt.compareSync(password, this.password);
+    Customer.prototype.validPassword = function(password){
+        //console.log(password, "   ", this.cust_password,"   ",this);
+        return password === this.cust_password;
+        //return bcrypt.compareSync(password, this.password);
     };
     // Hooks are automatic methods that run during various phases of the User Model lifecycle
     // In this case, before a User is created, we will automatically hash their password

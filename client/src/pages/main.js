@@ -8,7 +8,6 @@ import CustStart from "./cust_start";
 import UserRegister from "./usr_register";
 import CustInfo from "./cust_info";
 import EventInfo from "./event_info";
-import EventModal from "./event_modal";
 
 const Main = () => (
     <main>
@@ -17,9 +16,8 @@ const Main = () => (
             <Route exact path='/usr_login' component={UserLogin} />
             <Route exact path='/usr_register' component={UserRegister} />
             <Route exact path='/cust_start' component={CustStart} />
-            <Route exact path='/cust_info:email' component={CustInfo} />
-            <Route exact path='/event_info' component={EventInfo} />
-            <Route exact path='/event_modal' component={EventModal}/>
+            <Route exact path='/cust_info/:email' component={CustInfo} />
+            <Route exact path='/event_info/:email' component={EventInfo} />
         </Switch>
     </main>
 )
