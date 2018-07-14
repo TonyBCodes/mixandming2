@@ -62,6 +62,12 @@ class EventInfo extends Component {
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
+    componentWillMount() {
+        if (this.props.match.params.email) {
+            this.setState({ email: this.props.match.params.email });
+        }
+    }
+
     componentDidMount() {
         this.ing_option_list();
     }

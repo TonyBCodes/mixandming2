@@ -1,6 +1,6 @@
 //Require Express and Router
-const express = require('express');
-const app = express.Router();
+//const express = require('express');
+//const app = express.Router();
 // Requiring our models and passport as we've configured it
 
 module.exports = function (app, passport, db) {
@@ -72,6 +72,30 @@ module.exports = function (app, passport, db) {
                 id: req.user.id
             });
         }
+    });
+
+    app.get("/api/cust_exists:email", function (req, res) {
+
+        console.log(req.params.email);
+        console.log("Right here!!");
+
+        db.Customer.findOne({
+            where: { cust_email: email }
+        }).then(user => {
+            //if (err) { console.log(err); return done(err); }
+            if (!user) { console.log("user not found"); return done(null, false); }
+            return done(null, user);
+        });
+
+
+       
+        //}).then(function () {
+        //    res.redirect(307, "/api/login");
+        //}).catch(function (err) {
+        //    console.log(err);
+        //    res.json(err);
+        //    // res.status(422).json(err.errors[0].message);
+        //});
     });
 
 };

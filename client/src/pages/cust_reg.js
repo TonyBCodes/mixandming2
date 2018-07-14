@@ -1,7 +1,8 @@
 ﻿// JavaScript source code
 import React, { Component } from "react";
 import { Redirect, withRouter } from 'react-router-dom';
-import CLogin from "../apis/cust_login_api";
+import axios from "axios";
+//import CLogin from "../apis/cust_login_api";
 
 class CustReg extends Component {
     state = {
@@ -26,28 +27,47 @@ class CustReg extends Component {
 
         console.log('handling form submit...');
 
-        if (this.state.email) {
+        let durl = "/api/cust_exists/" + this.state.email;
+        let ourl = `/api/cust_exists/${this.state.email}`;
+        console.log(durl);
+        console.log(ourl);
 
-            if (CLogin.checkforuser(this.state.email)) {
+        axios
+            .get(durl, function (response) { })
+            .then(response => { (console.log(response)) });
+    }
 
-                console.log('email found');
+        //if (this.state.email) {
+        //    let checkpath = `/api/cust_exists/${this.state.email}`;
+        //    console.log(checkpath);
+        //    axios.get("/api/cust_exists/" + this.state.email, function (res) {})
+        //    //axios.get({ checkpath })
+        //        .then((res) => {
+        //            console.log(res);
+        //            if (res) {
 
-                //redirct to login page
-                this.setState({ isHidden : false });
-                this.setState({ message: "The email you entered is already associated with an account.  Please log in." });
-            }
-            else {
-                //redirect to register page
-                //send email as prop
-                console.log('email not found');
-                this.renderCustRegRedirect();
-            }
+        //                console.log('email found');
 
-        }
-        else {
-            console.log('this.state.email not found');
-        }
-    };
+        //                //redirct to login page
+        //                this.setState({ isHidden: false });
+        //                this.setState({ message: "The email you entered is already associated with an account.  Please log in." });
+        //            }
+        //            else {
+        //                //redirect to register page
+        //                //send email as prop
+        //                console.log('email not found');
+        //                this.renderCustRegRedirect();
+        //            }
+        //        })
+        //        .catch((err) => {
+        //            console.log(err);
+        //        });
+        //}
+
+        //else {
+        //    console.log('this.state.email not found');
+        //}
+    //};
 
 
 

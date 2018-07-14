@@ -17,6 +17,9 @@ export default {
         return axios.get("/auth/logout/");
     },
     checkforuser: function (email) {
-        return false;
+        let checkpath = `/api/cust_exists/${email}`;
+        //`/event_info/${this.state.email}`
+        console.log(checkpath);
+        return axios.get({checkpath});
     }
 };

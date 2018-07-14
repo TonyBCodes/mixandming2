@@ -55,8 +55,9 @@ class CustLogin extends Component {
 
 
     render() {
-        if (this.state.loggedin = true) {
-            return <Redirect to="/" />;
+        if (this.state.loggedin === true) {
+            let red_path = `/event_info/${this.state.email}`;
+            return <Redirect to={red_path} />;
         }
         else {
             return (
