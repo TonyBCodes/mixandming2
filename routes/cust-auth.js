@@ -41,15 +41,16 @@ module.exports = function (app, passport, db) {
         }).catch(function (err) {
             console.log(err);
             res.json(err);
-            // res.status(422).json(err.errors[0].message);
         });
     });
 
 
     // Route for logging customer in
-    app.post("/api/login", passport.authenticate("local", { failureRedirect: "/" }), function (req, res) {
-        //console.log(res.data);
-        res.json(true);
+    app.post("/api/login", passport.authenticate("local", { failureRedirect: '/login/true' }), function (req, res) {
+        console.log("Req  ", req.body);
+        console.log("Res   ", res.body);
+        console.log("Inside of Login");
+        res.send(true);
     });
 
     // Route for logging user out
@@ -74,28 +75,24 @@ module.exports = function (app, passport, db) {
         }
     });
 
-    app.get("/api/cust_exists:email", function (req, res) {
+    app.get("/api/cust_exists/:email", function (req, res) {
 
         console.log(req.params.email);
         console.log("Right here!!");
 
         db.Customer.findOne({
-            where: { cust_email: email }
+            where: { cust_email: req.params.email }
         }).then(user => {
             //if (err) { console.log(err); return done(err); }
-            if (!user) { console.log("user not found"); return done(null, false); }
-            return done(null, user);
+            console.log(user);
+            if (user === null) {
+                res.send(false);
+            }
+            else {
+                res.send(true);
+            }
         });
 
-
-       
-        //}).then(function () {
-        //    res.redirect(307, "/api/login");
-        //}).catch(function (err) {
-        //    console.log(err);
-        //    res.json(err);
-        //    // res.status(422).json(err.errors[0].message);
-        //});
     });
 
 };

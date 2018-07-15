@@ -42,7 +42,7 @@ class CustInfo extends Component {
         axios.post("/api/signup", this.state)
             .then((res) => {
                 console.log(res);
-                //this.renderEventInfoRedirect();
+                this.renderEventInfoRedirect();
             })
             .catch((err) => {
                 console.log(err);

@@ -8,6 +8,7 @@ import CustStart from "./cust_start";
 import UserRegister from "./usr_register";
 import CustInfo from "./cust_info";
 import EventInfo from "./event_info";
+import CustLogin from './cust_login';
 
 const Main = () => (
     <main>
@@ -18,6 +19,7 @@ const Main = () => (
             <Route exact path='/cust_start' component={CustStart} />
             <Route exact path='/cust_info/:email' component={CustInfo} />
             <Route exact path='/event_info/:email' component={EventInfo} />
+            <Route path='/cust_login/:failed' component={CustLogin} />
         </Switch>
     </main>
 )

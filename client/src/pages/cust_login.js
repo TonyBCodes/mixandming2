@@ -9,7 +9,7 @@ class CustLogin extends Component {
     state = {
         email: "",
         password: "",
-        message: "",
+        message: "Incorrect email or password.  Please try again.",
         isHidden: true,
         loggedin: false
     }
@@ -21,9 +21,8 @@ class CustLogin extends Component {
         });
     };
 
-    renderEventInfoRedirect = () => {
-        console.log("2");
-        return <Redirect to="/" />;
+    componentWillMount() {
+        this.setState({ message: "Incorrect Password. \n Please try again or request password reset." });
     }
 
     handleSubmit = event => {
@@ -33,26 +32,21 @@ class CustLogin extends Component {
         //console.log(this.state);
         axios.post("/api/login", this.state)
             .then((res) => {
-                console.log(res);
+                console.log(res.data);
                 //this.renderEventInfoRedirect();
-                switch (res.data) {
-                    case true: {
-                        console.log("1");
-                        this.setState({ loggedin: true });
-                        break;
-                    }
-                    case false: {
-                        this.setState({ isHidden: false });
-                        this.setState({ message:"Incorrect Password. \n Please try again or request password reset." });
-                        break;
-                    }
+                if (res.data === true) {
+                    console.log("1");
+                    this.setState({ loggedin: true });
+                }
+                else {
+                    console.log("incorrect password condition");
+                    this.setState({ isHidden: false });
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
     };
-
 
     render() {
         if (this.state.loggedin === true) {
@@ -72,7 +66,7 @@ class CustLogin extends Component {
                             <br />
                             <button type="submit" onClick={this.handleSubmit}>Login</button>
                             <br />
-                            {!this.state.isHidden && <textarea id="lgn_msg">Login Message</textarea>}
+                            {!this.state.isHidden && <textarea name="message" id="lgn_msg" value={this.state.value}></textarea>}
                         </form>
                     </div>
                 </div>
@@ -82,24 +76,3 @@ class CustLogin extends Component {
 }
 
 export default CustLogin;
-
-    //    handleInputChange = event => {
-    //        const { name, value } = event.target
-    //        this.setState({
-    //            [name]: value
-    //        });
-    //    };
-
-    //    handleSubmit = event => {
-    //        event.preventDefault();
-    //        if (this.state.email && this.state.password) {
-    //            API.loginUser({
-    //                email: this.state.email,
-    //                password: this.state.password
-    //            }).then(res => {
-    //                console.log(res);
-    //                this.props.history.push("/");
-    //            })
-    //                .catch(err => console.log(err));
-    //        };
-    //    };

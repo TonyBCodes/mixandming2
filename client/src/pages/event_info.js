@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
 import { PowerSelect } from 'react-power-select'
+import 'react-power-select/dist/react-power-select.css'
 import { Redirect, withRouter } from 'react-router-dom';
 import axios from "axios"
 //import API from "../utils/API";
@@ -50,7 +51,11 @@ class EventInfo extends Component {
         isHidden: true,
         search_type: "",
         search_value: "",
-        option_list:[]
+        option_list: [],
+        drink_arr:[],
+        drink_list: [],
+        drinknamesearch: "",
+        drinkingsearch: ""
     }
     
     constructor() {
@@ -88,8 +93,37 @@ class EventInfo extends Component {
             let drink_ing_arr = res.data.drinks.map(a => a.strIngredient1);
             // let drink_ing_arr = Object.values(res.data.drinks);
             console.log(drink_ing_arr);
+            drink_ing_arr.sort();
             this.setState({ option_list: drink_ing_arr });
         }).catch(error => console.log(error) );
+    }
+
+    //ing_search(event) {
+    //    event.preventDefault();
+    //    let searchTerm = this.state.drinkingsearch;
+    //    axios.get("/api/searchby_ing"+searchTerm).then(res => {
+    //        let drink_arr = res.data.drinks.map(a => a.strIngredient1);
+    //        // let drink_ing_arr = Object.values(res.data.drinks);
+    //        console.log(drink_arr);
+    //        drink_arr.sort();
+    //        this.setState({ drink_list: drink_ing_arr });
+    //    }).catch(error => console.log(error));
+
+    //}
+
+    name_search(search) {
+        //event.preventDefault();
+        console.log(search);
+        //let searchTerm = this.state.drinknamesearch.value;
+        //axios.get("/api/searchby_name/"+searchTerm).then(res => {
+        //    console.log(res);
+            //let drink_arr = res.data.drinks.map(a => a.strIngredient1);
+            // let drink_ing_arr = Object.values(res.data.drinks);
+            //console.log(drink_arr);
+           // drink_arr.sort();
+            //this.setState({ drink_list: drink_ing_arr });
+        //}).catch(error => console.log(error));
+
     }
 
     handleChange = ({ option }) => {
@@ -97,6 +131,13 @@ class EventInfo extends Component {
             selectedOption: option
         })
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
 
     render() {
         return (
@@ -235,10 +276,10 @@ class EventInfo extends Component {
                             <div className="col-md-1 " />
                             <div className="col-md-4 ">
                                 <div className="row">
-                                    <input type="text" placeholder='Drink Name' className="col-md-10 pad-lg-0 " />
-                                    <a href="" id= "namesearch" className="wpc-upcoming-reg">Search</a>
-                                    <input type="text" placeholder='Ingredient Name' className="col-md-10 pad-lg-0 " />
-                                    <a href="" id="ingsearch" className="wpc-upcoming-reg">Search</a>
+                                    <input type="text" name="drinknamesearch" onChange={this.handleInputChange} placeholder='Drink Name' value={this.state.drinknamesearch} className = "col-md-10 pad-lg-0 " />
+                                    <a href="" id="namesearch" onClick={() => this.name_search(this.state.drinknamesearch)} className="wpc-upcoming-reg">Search</a>
+                                    <input type="text" name="drinkingsearch" onChange={this.handleInputChange} placeholder='Ingredient Name' value={this.state.drinkingsearch} className="col-md-10 pad-lg-0 " />
+                                    <a href="" id="ingsearch" onClick={this.ing_search} className="wpc-upcoming-reg">Search</a>
                                 </div>
                                 <PowerSelect
                                     options={this.state.option_list}

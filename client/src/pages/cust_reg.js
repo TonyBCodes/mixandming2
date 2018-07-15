@@ -8,7 +8,8 @@ class CustReg extends Component {
     state = {
         email: "",
         message: "",
-        isHidden: true
+        isHidden: true,
+        needs_to_register: false
     }
 
     handleInputChange = event => {
@@ -33,61 +34,84 @@ class CustReg extends Component {
         console.log(ourl);
 
         axios
-            .get(durl, function (response) { })
-            .then(response => { (console.log(response)) });
+            .get(durl, function (res) { })
+            .then(res => {
+                if (res.data === true) {
+                    console.log('email found');
+
+                    //suggest customer login
+                    this.setState({ isHidden: false });
+                    this.setState({ message: "The email you entered is already associated with an account.  Please log in." });
+                }
+                else {
+                    //set state for redirect to register page
+                    console.log('email not found');
+                    this.setState({ needs_to_register: true });
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                this.errored = true
+            });
     }
 
-        //if (this.state.email) {
-        //    let checkpath = `/api/cust_exists/${this.state.email}`;
-        //    console.log(checkpath);
-        //    axios.get("/api/cust_exists/" + this.state.email, function (res) {})
-        //    //axios.get({ checkpath })
-        //        .then((res) => {
-        //            console.log(res);
-        //            if (res) {
+    //if (this.state.email) {
+    //    let checkpath = `/api/cust_exists/${this.state.email}`;
+    //    console.log(checkpath);
+    //    axios.get("/api/cust_exists/" + this.state.email, function (res) {})
+    //    //axios.get({ checkpath })
+    //        .then((res) => {
+    //            console.log(res);
+    //            if (res) {
 
-        //                console.log('email found');
+    //                console.log('email found');
 
-        //                //redirct to login page
-        //                this.setState({ isHidden: false });
-        //                this.setState({ message: "The email you entered is already associated with an account.  Please log in." });
-        //            }
-        //            else {
-        //                //redirect to register page
-        //                //send email as prop
-        //                console.log('email not found');
-        //                this.renderCustRegRedirect();
-        //            }
-        //        })
-        //        .catch((err) => {
-        //            console.log(err);
-        //        });
-        //}
+    //                //redirct to login page
+    //                this.setState({ isHidden: false });
+    //                this.setState({ message: "The email you entered is already associated with an account.  Please log in." });
+    //            }
+    //            else {
+    //                //redirect to register page
+    //                //send email as prop
+    //                console.log('email not found');
+    //                this.renderCustRegRedirect();
+    //            }
+    //        })
+    //        .catch((err) => {
+    //            console.log(err);
+    //        });
+    //}
 
-        //else {
-        //    console.log('this.state.email not found');
-        //}
+    //else {
+    //    console.log('this.state.email not found');
+    //}
     //};
 
 
 
 
     render() {
-        return (
+        if (this.state.needs_to_register === true) {
+            let red_path = `/cust_info/${this.state.email}`;
+            return <Redirect to={red_path} />;
+        }
+        else {
+            return (
 
-            <div className="col-lg-6 col-md-6">
-                <div className="wpc-about-form marg-lg-t140 marg-lg-b140 marg-sm-b50 marg-sm-t50">
-                    <h3><i>Register</i></h3>
-                    <span>Please register as a new customer.</span>
-                    <form>
-                        <input type="email" name="email" placeholder='Email Address' className="six_col" onChange={this.handleInputChange} />
-                        <br />
-                        <button type="submit" onClick={this.handleSubmit}>Register</button>
-                        {!this.state.isHidden && <textarea id="reg_msg">{this.state.message}</textarea>}
-                    </form>
+                <div className="col-lg-6 col-md-6">
+                    <div className="wpc-about-form marg-lg-t140 marg-lg-b140 marg-sm-b50 marg-sm-t50">
+                        <h3><i>Register</i></h3>
+                        <span>Please register as a new customer.</span>
+                        <form>
+                            <input type="email" name="email" placeholder='Email Address' className="six_col" onChange={this.handleInputChange} />
+                            <br />
+                            <button type="submit" onClick={this.handleSubmit}>Register</button>
+                            {!this.state.isHidden && <textarea id="reg_msg">{this.state.message}</textarea>}
+                        </form>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
