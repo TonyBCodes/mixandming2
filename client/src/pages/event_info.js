@@ -111,9 +111,9 @@ class EventInfo extends Component {
 
     //}
 
-    name_search(search) {
-        //event.preventDefault();
-        console.log(search);
+    name_search(event) {
+        event.preventDefault();
+        console.log(this.state.drinknamesearch);
         //let searchTerm = this.state.drinknamesearch.value;
         //axios.get("/api/searchby_name/"+searchTerm).then(res => {
         //    console.log(res);
@@ -277,7 +277,7 @@ class EventInfo extends Component {
                             <div className="col-md-4 ">
                                 <div className="row">
                                     <input type="text" name="drinknamesearch" onChange={this.handleInputChange} placeholder='Drink Name' value={this.state.drinknamesearch} className = "col-md-10 pad-lg-0 " />
-                                    <a href="" id="namesearch" onClick={() => this.name_search(this.state.drinknamesearch)} className="wpc-upcoming-reg">Search</a>
+                                    <a href="" id="namesearch" onClick={this.name_search} className="wpc-upcoming-reg">Search</a>
                                     <input type="text" name="drinkingsearch" onChange={this.handleInputChange} placeholder='Ingredient Name' value={this.state.drinkingsearch} className="col-md-10 pad-lg-0 " />
                                     <a href="" id="ingsearch" onClick={this.ing_search} className="wpc-upcoming-reg">Search</a>
                                 </div>
@@ -308,3 +308,5 @@ class EventInfo extends Component {
 }
 
 export default EventInfo;
+
+//{() => this.name_search(this.state.drinknamesearch)}
