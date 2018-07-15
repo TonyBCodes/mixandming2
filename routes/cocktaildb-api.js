@@ -24,11 +24,13 @@ module.exports = function (app) {
     //https://www.thecocktaildb.com/api/json/v1/${APIKey}/search.php?s=margarita
     app.get("/api/searchby_name/:searchTerm", (req, res) => {
         const searchTerm = encodeURI(req.params.searchTerm);
-        console.log(searchTerm);
-        console.log(APIKey);
+        //console.log(searchTerm);
+        //console.log(APIKey);
         axios.get(`https://www.thecocktaildb.com/api/json/v1/${APIKey}/search.php?s=${searchTerm}`)
             .then((results) => {
-                const data = results.data.results;
+                //console.log(results);
+                //console.log(results.data.drinks);
+                const data = results.data.drinks;
                 res.json(data);
             })
             .catch(err => { console.log(err); res.end() });

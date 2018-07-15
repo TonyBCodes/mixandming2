@@ -2,11 +2,56 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
-import { PowerSelect } from 'react-power-select'
-import 'react-power-select/dist/react-power-select.css'
+import { PowerSelect } from 'react-power-select';
+import 'react-power-select/dist/react-power-select.css';
 import { Redirect, withRouter } from 'react-router-dom';
-import axios from "axios"
-//import API from "../utils/API";
+import axios from "axios";
+import Gallery from 'react-grid-gallery';
+
+let IMAGES = [];
+
+function init_image() {
+    IMAGES = [{
+        src: "/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg",
+        thumbnail: "/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg",
+        thumbnailWidth: 320,
+        thumbnailHeight: 320,
+        isSelected: false,
+        caption: "",
+        thumbnailCaption: "",
+        tag: {}
+    }];
+}
+
+function ass_drink_select(drinks) {
+    IMAGES = [];
+    for (let i = 0; i < drinks.length; i++) {
+
+        let new_drink = {
+            src: drinks[i].strDrinkThumb,
+            thumbnail: drinks[i].strDrinkThumb,
+            thumbnailWidth: 320,
+            thumbnailHeight: 320,
+            isSelected: false,
+            caption: drinks[i].strDrink,
+            thumbnailCaption: drinks[i].strDrink,
+            tag: {drink_id: drinks[i].idDrink}
+        };
+
+        IMAGES.push(new_drink);
+
+        //IMAGES[i].src = drinks[i].strDrinkThumb;
+        //IMAGES[i].thumbnail = drinks[i].strDrinkThumb;
+        //IMAGES[i].thumbnailWidth = 320;
+        //IMAGES[i].thumbnailHeight = 212;
+        //IMAGES[i].isSelected = false;
+        //IMAGES[i].caption = drinks[i].strDrink;
+        //IMAGES[i].thumbnailCaption = drinks[i].strDrink;
+        //console.log(i,"   ",drinks[i]);
+        //console.log(i,"   ",drinks);
+    }
+    console.log(IMAGES);
+}
 
 class EventInfo extends Component {
     state = {
@@ -15,8 +60,8 @@ class EventInfo extends Component {
         event_date: "",
         event_start: "",
         event_pax: 0,
-        drink1_id:"",
-        drink1_name:"",
+        drink1_id: "",
+        drink1_name: "",
         drink1_pic: "",
         drink2_id: "",
         drink2_name: "",
@@ -46,18 +91,18 @@ class EventInfo extends Component {
         addon6: "",
         addon6_quant: 0,
         notes: "",
-        drink_chooser:[],
+        drink_chooser: [],
         message: "",
         isHidden: true,
         search_type: "",
         search_value: "",
         option_list: [],
-        drink_arr:[],
+        drink_arr: [],
         drink_list: [],
         drinknamesearch: "",
         drinkingsearch: ""
     }
-    
+
     constructor() {
         super();
         this.state = {
@@ -81,6 +126,7 @@ class EventInfo extends Component {
         event.preventDefault();
         console.log(event.target.id);
         this.setState({ showModal: true });
+        init_image();
     }
 
     handleCloseModal(event) {
@@ -95,7 +141,7 @@ class EventInfo extends Component {
             console.log(drink_ing_arr);
             drink_ing_arr.sort();
             this.setState({ option_list: drink_ing_arr });
-        }).catch(error => console.log(error) );
+        }).catch(error => console.log(error));
     }
 
     //ing_search(event) {
@@ -111,18 +157,19 @@ class EventInfo extends Component {
 
     //}
 
-    name_search(event) {
+
+    name_search = (event) => {
         event.preventDefault();
         console.log(this.state.drinknamesearch);
-        //let searchTerm = this.state.drinknamesearch.value;
-        //axios.get("/api/searchby_name/"+searchTerm).then(res => {
-        //    console.log(res);
-            //let drink_arr = res.data.drinks.map(a => a.strIngredient1);
-            // let drink_ing_arr = Object.values(res.data.drinks);
-            //console.log(drink_arr);
-           // drink_arr.sort();
+        let searchTerm = this.state.drinknamesearch;
+        axios.get("/api/searchby_name/" + searchTerm).then(res => {
+            console.log(res.data);
+            let drink_arr = res.data;
+            //drink_arr.sort();
+            ass_drink_select(drink_arr);
+
             //this.setState({ drink_list: drink_ing_arr });
-        //}).catch(error => console.log(error));
+        }).catch(error => console.log(error));
 
     }
 
@@ -228,15 +275,7 @@ class EventInfo extends Component {
                                             </div>
                                         </div>
                                         <div className="col-md-4 ">
-                                            <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="./img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
-                                                </div>
-                                                <div className="wpc-upcoming-body">
-                                                    <span className='wpc-upcoming-date'>Select Drink 6</span>
-                                                    <h6>Drink 6 Name</h6>
-                                                    <a href="" onClick={this.handleOpenModal} id="drink6" className="wpc-upcoming-reg">Choose Drink</a>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                     <br />
@@ -276,7 +315,7 @@ class EventInfo extends Component {
                             <div className="col-md-1 " />
                             <div className="col-md-4 ">
                                 <div className="row">
-                                    <input type="text" name="drinknamesearch" onChange={this.handleInputChange} placeholder='Drink Name' value={this.state.drinknamesearch} className = "col-md-10 pad-lg-0 " />
+                                    <input type="text" name="drinknamesearch" onChange={this.handleInputChange} placeholder='Drink Name' value={this.state.drinknamesearch} className="col-md-10 pad-lg-0 " />
                                     <a href="" id="namesearch" onClick={this.name_search} className="wpc-upcoming-reg">Search</a>
                                     <input type="text" name="drinkingsearch" onChange={this.handleInputChange} placeholder='Ingredient Name' value={this.state.drinkingsearch} className="col-md-10 pad-lg-0 " />
                                     <a href="" id="ingsearch" onClick={this.ing_search} className="wpc-upcoming-reg">Search</a>
@@ -286,18 +325,11 @@ class EventInfo extends Component {
                                     selected={this.state.selectedOption}
                                     onChange={this.handleChange}
                                 />
-                                
+
                             </div>
                             <div className="col-md-1 " />
                             <div className="col-md-6 ">
-                                <div className=" wpc-upcom">
-                                    <div className="wpc-upcoming-head"><img src="./img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg" alt="Select A Drink" />
-                                        <div className="wpc-upcoming-body">
-                                            <span className='wpc-upcoming-date'>Drink Name Placeholder</span>
-                                        </div>
-                                        <a href="" onClick={this.handleCloseModal} className="wpc-upcoming-reg">Select</a>
-                                    </div>
-                                </div>
+                                <Gallery images={IMAGES} />
                             </div>
                         </div>
                     </div>
@@ -309,4 +341,11 @@ class EventInfo extends Component {
 
 export default EventInfo;
 
-//{() => this.name_search(this.state.drinknamesearch)}
+//<div className=" wpc-upcom">
+//    <div className="wpc-upcoming-head"><img src="/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg" alt="Select A Drink" />
+//        <div className="wpc-upcoming-body">
+//            <span className='wpc-upcoming-date'>Drink Name Placeholder</span>
+//        </div>
+//        <a href="" onClick={this.handleCloseModal} className="wpc-upcoming-reg">Select</a>
+//    </div>
+//</div>
