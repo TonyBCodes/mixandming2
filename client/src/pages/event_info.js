@@ -20,22 +20,22 @@ class EventInfo extends Component {
         selected_drink: "",
         drink1_id: "",
         drink1_name: "Drink 1",
-        drink1_pic: "",
+        drink1_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         drink2_id: "",
         drink2_name: "Drink 2",
-        drink2_pic: "",
+        drink2_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         drink3_id: "",
-        drink3_name: "",
-        drink3_pic: "",
+        drink3_name: "Drink 3",
+        drink3_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         drink4_id: "",
-        drink4_name: "",
-        drink4_pic: "",
+        drink4_name: "Drink 4",
+        drink4_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         drink5_id: "",
-        drink5_name: "",
-        drink5_pic: "",
+        drink5_name: "Drink 5",
+        drink5_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         drink6_id: "",
-        drink6_name: "",
-        drink6_pic: "",
+        drink6_name: "Drink 6",
+        drink6_pic: "/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg",
         addon1: "",
         addon1_quant: 0,
         addon2: "",
@@ -71,7 +71,9 @@ class EventInfo extends Component {
         showNav: true,
         //slideDuration: 450,
         //slideInterval: 2000,
-        thumbnailPosition: 'bottom'
+        thumbnailPosition: 'bottom',
+        // react modal settings
+        showModal: false
     };
 
     ass_drink_select = (drinks) => {
@@ -96,7 +98,6 @@ class EventInfo extends Component {
         this.setState({
             stuff: IMAGES
         })
-        console.log(IMAGES);
     }
 
     init_image = () => {
@@ -115,14 +116,9 @@ class EventInfo extends Component {
         })
     }
 
-    constructor() {
-        super();
-        this.state = {
-            showModal: false
-        };
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
-    }
+
+    handleOpenModal = this.handleOpenModal.bind(this);
+    handleCloseModal = this.handleCloseModal.bind(this);
 
     componentWillMount() {
         if (this.props.match.params.email) {
@@ -137,9 +133,10 @@ class EventInfo extends Component {
 
     handleOpenModal(event) {
         event.preventDefault();
-        console.log(event.target.id);
-        this.setState({ selected_drink: event.target.id });
-        this.setState({ showModal: true });
+        this.setState({
+            selected_drink: event.target.id,
+            showModal: true
+        });
         this.init_image();
         this.ing_clear(event);
         this.name_clear(event);
@@ -155,8 +152,6 @@ class EventInfo extends Component {
     ing_option_list() {
         axios.get("/api/ing_list").then(res => {
             let drink_ing_arr = res.data.drinks.map(a => a.strIngredient1);
-            // let drink_ing_arr = Object.values(res.data.drinks);
-            console.log(drink_ing_arr);
             drink_ing_arr.sort();
             this.setState({ option_list: drink_ing_arr });
         }).catch(error => console.log(error));
@@ -165,9 +160,7 @@ class EventInfo extends Component {
     ing_search = (event) => {
         event.preventDefault();
         let searchTerm = this.state.selectedOption;
-        console.log(searchTerm);
         axios.get("/api/searchby_ing/" + searchTerm).then(res => {
-            console.log(res);
             let drink_arr = res.data;
             //drink_arr.sort();
             this.ass_drink_select(drink_arr);
@@ -182,17 +175,17 @@ class EventInfo extends Component {
 
     ing_clear = (event) => {
         event.preventDefault();
-        this.setState({ selectedOption: "" });
-        this.setState({ drinkingsearch: "" });
+        this.setState({
+            selectedOption: "",
+            drinkingsearch: ""
+        });
     }
 
 
     name_search = (event) => {
         event.preventDefault();
-        console.log(this.state.drinknamesearch);
         let searchTerm = this.state.drinknamesearch;
         axios.get("/api/searchby_name/" + searchTerm).then(res => {
-            console.log(res.data);
             let drink_arr = res.data;
             //drink_arr.sort();
             this.ass_drink_select(drink_arr);
@@ -202,6 +195,62 @@ class EventInfo extends Component {
 
     _onImageClick = (event) => {
         console.log('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex(), this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid, this.state.stuff[this._imageGallery.getCurrentIndex()].original, this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle);
+        switch (this.state.selected_drink) {
+            case "drink1": {
+                this.setState({
+                    drink1_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink1_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink1_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+            case "drink2": {
+                this.setState({
+                    drink2_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink2_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink2_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+            case "drink3": {
+                this.setState({
+                    drink3_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink3_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink3_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+            case "drink4": {
+                this.setState({
+                    drink4_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink4_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink4_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+            case "drink5": {
+                this.setState({
+                    drink5_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink5_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink5_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+            case "drink6": {
+                this.setState({
+                    drink6_id: this.state.stuff[this._imageGallery.getCurrentIndex()].drinkid,
+                    drink6_pic: this.state.stuff[this._imageGallery.getCurrentIndex()].original,
+                    drink6_name: this.state.stuff[this._imageGallery.getCurrentIndex()].originalTitle
+                })
+                this.handleCloseModal(event);
+                break;
+            }
+        }
     }
 
     handleChange = ({ option }) => {
@@ -218,6 +267,8 @@ class EventInfo extends Component {
     };
 
     render() {
+        //super();
+        console.log(this.state);
         return (
             <div className="container-fluid cust-about max1024w">
                 <div className="cust-about-us ">
@@ -234,13 +285,13 @@ class EventInfo extends Component {
                             <div>
                                 <form>
                                     <div className="row">
-                                        <input type="text" placeholder='Event Name' name="event_name" className="col-md-10 pad-lg-0 " />
+                                        <input type="text" placeholder='Event Name' name="event_name" onChange={this.handleInputChange} className="col-md-10 pad-lg-0 " />
                                     </div>
                                     <br />
                                     <div className="row">
-                                        <input type="text" placeholder='Event Date' name="event_date" className="col-md-5 pad-lg-0 " />
-                                        <input type="text" placeholder='Event Strart Time' name="event_time" className="col-md-5 pad-lg-0 " />
-                                        <input type="text" placeholder='Number of Participants' name="event_pax" className="col-md-5 pad-lg-0 " />
+                                        <input type="text" placeholder='Event Date' name="event_date" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
+                                        <input type="text" placeholder='Event Strart Time' name="event_time" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
+                                        <input type="text" placeholder='Number of Participants' name="event_pax" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
                                     </div>
                                     <div className="row">
                                         <div className='col-lg-12 wpc-header wpc-upcoming marg-lg-t95 marg-sm-t50'>
@@ -250,33 +301,33 @@ class EventInfo extends Component {
                                     <div className="row colorblack">
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink1_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 1</span>
-                                                    <h6>{this.state.email}</h6>
+                                                    <h6>{this.state.drink1_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink1" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink2_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 2</span>
-                                                    <h6>{this.statedrink2_name}</h6>
+                                                    <h6>{this.state.drink2_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink2" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink3_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 3</span>
-                                                    <h6>Drink 3 Name</h6>
+                                                    <h6>{this.state.drink3_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink3" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
@@ -285,33 +336,33 @@ class EventInfo extends Component {
                                     <div className="row colorblack">
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink4_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 4</span>
-                                                    <h6>Drink 4 Name</h6>
+                                                    <h6>{this.state.drink4_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink4" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink5_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 5</span>
-                                                    <h6>Drink 5 Name</h6>
+                                                    <h6>{this.state.drink5_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink5" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-4 ">
                                             <div className=" wpc-upcom">
-                                                <div className="wpc-upcoming-head"><img src="/img/stock-photo-barman-show-bartender-pours-alcoholic-cocktails-439101094.jpg" alt="" />
+                                                <div className="wpc-upcoming-head"><img src={this.state.drink6_pic} alt="" />
                                                 </div>
                                                 <div className="wpc-upcoming-body">
                                                     <span className='wpc-upcoming-date'>Select Drink 6</span>
-                                                    <h6>Drink 6 Name</h6>
+                                                    <h6>{this.state.drink6_name}</h6>
                                                     <a href="" onClick={this.handleOpenModal} id="drink6" className="wpc-upcoming-reg">Choose Drink</a>
                                                 </div>
                                             </div>
