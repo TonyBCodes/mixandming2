@@ -29,7 +29,7 @@ module.exports = function (app) {
         axios.get(`https://www.thecocktaildb.com/api/json/v1/${APIKey}/search.php?s=${searchTerm}`)
             .then((results) => {
                 //console.log(results);
-                //console.log(results.data.drinks);
+                console.log(results.data.drinks);
                 const data = results.data.drinks;
                 res.json(data);
             })
@@ -44,7 +44,9 @@ module.exports = function (app) {
         console.log(APIKey);
         axios.get(`https://www.thecocktaildb.com/api/json/v1/${APIKey}/filter.php?i=${searchTerm}`)
             .then((results) => {
-                const data = results.data.results;
+                console.log("hi");
+                console.log(results.data.drinks);
+                const data = results.data.drinks;
                 res.json(data);
             })
             .catch(err => { console.log(err); res.end() });

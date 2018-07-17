@@ -1,4 +1,10 @@
 ﻿
+.sbs {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
 .cust-about-form {
     width: 100%;
     height: auto;
@@ -169,4 +175,8 @@ padding:10px;
     background-color: rebeccapurple;
     opacity: 1;
     z-index: 999;
+}
+
+.pic_overflow{
+    overflow:auto;
 }
