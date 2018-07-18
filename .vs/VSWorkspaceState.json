@@ -3,12 +3,11 @@
     "",
     "\\client",
     "\\client\\public",
-    "\\client\\public\\img",
+    "\\client\\public\\js",
     "\\client\\src",
     "\\client\\src\\apis",
-    "\\client\\src\\pages",
-    "\\routes"
+    "\\client\\src\\pages"
   ],
-  "SelectedNode": "\\client\\src\\apis\\usr_login_api.js",
+  "SelectedNode": "\\client\\public\\js\\index.js",
   "PreviewInSolutionExplorer": false
 }
