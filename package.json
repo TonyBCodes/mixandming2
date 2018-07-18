@@ -9,6 +9,7 @@
     "develop-start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "start": "node server.js",
     "watch": "nodemon server.js",
+    "installDeps": "yarn && cd client && yarn",
     "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [],
