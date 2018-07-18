@@ -21,6 +21,10 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 // Requiring our routes
 require("./routes/cust-auth")(app, passport, db); //,passport);
 //require("./routes/user-auth")(app, db);  //,passport);
@@ -30,9 +34,9 @@ require("./routes/cocktaildb-api")(app);
 // Define any API routes before this runs
 app.get("*", function (req, res) {
     //use this in development
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+    //res.sendFile(path.join(__dirname, "./client/public/index.html"));
     //change to this in production
-    //res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 passport.use(new LocalStrategy({
