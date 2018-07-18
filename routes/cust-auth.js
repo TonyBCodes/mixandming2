@@ -59,23 +59,38 @@ module.exports = function (app, passport, db) {
         res.redirect("/");
     });
 
-    // Route for getting some data about our user to be used client side
-    app.get("/api/user_data", function (req, res) {
-        if (!req.user) {
-            // The user is not logged in, send back an empty object
-            res.json({});
-        }
-        else {
-            // Otherwise send back the user's email and id
-            // Sending back a password, even a hashed password, isn't a good idea
-            res.json({
-                email: req.user.email,
-                id: req.user.id
-            });
-        }
+    // Route for getting userid of logged in customer
+    app.get("/api/user_id/:email", function (req, res) {
+        db.Customer.findOne({
+            where: { cust_email: req.params.email }
+        }).then(user => {
+            //if (err) { console.log(err); return done(err); }
+            console.log(user);
+            res.send(true);
+        });
     });
 
     app.get("/api/cust_exists/:email", function (req, res) {
+
+        console.log(req.params.email);
+        console.log("Right here!!");
+
+        db.Customer.findOne({
+            where: { cust_email: req.params.email }
+        }).then(user => {
+            //if (err) { console.log(err); return done(err); }
+            console.log(user);
+            if (user === null) {
+                res.send(false);
+            }
+            else {
+                res.send(true);
+            }
+        });
+
+    });
+
+    app.put("/api/cust_exists/:email", function (req, res) {
 
         console.log(req.params.email);
         console.log("Right here!!");

@@ -13,6 +13,7 @@ import ImageGallery from 'react-image-gallery';
 class EventInfo extends Component {
     state = {
         email: null,
+        cust_id: null,
         event_name: "",
         event_date: "",
         event_start: "",
@@ -253,6 +254,23 @@ class EventInfo extends Component {
         }
     }
 
+    save_event = (event) => {
+
+        axios.get("/api/userid/" + this.state.email)
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    cust_id: res.cust_id
+                });
+                axios.put("/api/save_event" + this.state)
+                    .then(resp => {
+                        console.log(resp);
+                    })
+                    .catch(error => console.log(error));
+            })
+            .catch(error => console.log(error));
+    }
+
     handleChange = ({ option }) => {
         this.setState({
             selectedOption: option
@@ -367,11 +385,9 @@ class EventInfo extends Component {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-
                                     <br />
-                                    <button>Save Your Information</button>
+                                    <button id="saveevent" onClick={this.save_event}>Save Your Information</button>
                                     <br />
                                     {!this.state.isHidden && <textarea id="cust_info_msg">Customer Info Message</textarea>}
                                 </form>
