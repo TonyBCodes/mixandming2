@@ -60,37 +60,17 @@ module.exports = function (app, passport, db) {
     });
 
     // Route for getting userid of logged in customer
-    app.get("/api/user_id/:email", function (req, res) {
+    app.get("/api/cust_info/:email", function (req, res) {
         db.Customer.findOne({
             where: { cust_email: req.params.email }
-        }).then(user => {
+        }).then(cust => {
             //if (err) { console.log(err); return done(err); }
-            console.log(user);
-            res.send(true);
+            console.log(cust);
+            res.send(cust);
         });
     });
 
     app.get("/api/cust_exists/:email", function (req, res) {
-
-        console.log(req.params.email);
-        console.log("Right here!!");
-
-        db.Customer.findOne({
-            where: { cust_email: req.params.email }
-        }).then(user => {
-            //if (err) { console.log(err); return done(err); }
-            console.log(user);
-            if (user === null) {
-                res.send(false);
-            }
-            else {
-                res.send(true);
-            }
-        });
-
-    });
-
-    app.put("/api/cust_exists/:email", function (req, res) {
 
         console.log(req.params.email);
         console.log("Right here!!");

@@ -1,4 +1,11 @@
-﻿
+﻿.footer_marg{
+    margin-top: 40px;
+}
+
+.buttonmargin{
+    margin-bottom:5px;
+}
+
 .sbs {
     display: inline-block;
     vertical-align: top;
@@ -162,7 +169,10 @@ padding:10px;
 .rowcenter {
     margin: 0;
     position: relative;
+}
 
+.divcenter{
+    margin: 0 auto;
 }
 
 

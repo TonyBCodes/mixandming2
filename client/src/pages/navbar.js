@@ -1,6 +1,7 @@
 // JavaScript source code
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 
 const Navbar = () => (
@@ -12,13 +13,13 @@ const Navbar = () => (
                     <div className="wpc-navigation">
                         <nav>
                             <ul className="main-menu">
-                                <li className="menu-item logo"><Link to="/"><img className="menulogo" src="/img/logo1.jpg" alt="Mix and Ming" /></Link></li>
-                                <li className="menu-item"> <Link to="/">Home</Link></li>
-                                <li className="menu-item"><a className="" href="">About Us</a></li>
-                                <li className="menu-item"><a className="" href="">Services</a></li>
+                                <li className="menu-item logo"><HashLink to="/#home"><img className="menulogo" src="/img/logo1.jpg" alt="Mix and Ming" /></HashLink></li>
+                                <li className="menu-item"> <HashLink to="/#home">Home</HashLink></li>
+                                <li className="menu-item"><HashLink to="/#about">About Us</HashLink></li>
+                                <li className="menu-item"><HashLink to="/#services">Services</HashLink></li>
                                 <li className="menu-item"><a href="">Gallery</a></li>
                                 <li className="menu-item"><a href="">FAQ</a></li>
-                                <li className="menu-item"><Link className="" to="/cust_start">Book an Event</Link></li>
+                                <li className="menu-item"><HashLink className="" to="/cust_start/#top">Book an Event</HashLink></li>
                                 <li className="menu-item"><a className="" href="/cust_start">Logout</a></li>
                             </ul>
                         </nav>

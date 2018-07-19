@@ -103,14 +103,10 @@ class EventInfo extends Component {
 
     init_image = () => {
         var IMAGES = [{
-            src: "/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg",
+            original: "/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg",
             thumbnail: "/img/depositphotos_18605195-stock-photo-several-glasses-of-different-drinks.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 320,
-            isSelected: false,
-            caption: "",
-            thumbnailCaption: "",
-            tag: {}
         }];
         this.setState({
             stuff: IMAGES
@@ -255,14 +251,38 @@ class EventInfo extends Component {
     }
 
     save_event = (event) => {
-
-        axios.get("/api/userid/" + this.state.email)
+        event.preventDefault();
+        axios.get("/api/cust_info/" + this.state.email)
             .then(res => {
-                console.log(res);
-                this.setState({
-                    cust_id: res.cust_id
-                });
-                axios.put("/api/save_event" + this.state)
+                console.log(res.data);
+                let cust_inf=res.data
+                let event_data = {
+                    name: this.state.event_name,
+                    date: this.state.event_date,
+                    time: this.state.event_start,
+                    pax: this.state.event_pax,
+                    drink1id: this.state.drink1_id,
+                    drink1name: this.state.drink1_name,
+                    drink1pic: this.state.drink1_pic,
+                    drink2id: this.state.drink2_id,
+                    drink2name: this.state.drink2_name,
+                    drink2pic: this.state.drink2_pic,
+                    drink3id: this.state.drink3_id,
+                    drink3name: this.state.drink3_name,
+                    drink3pic: this.state.drink3_pic,
+                    drink4id: this.state.drink4_id,
+                    drink4name: this.state.drink4_name,
+                    drink4pic: this.state.drink4_pic,
+                    drink5id: this.state.drink5_id,
+                    drink5name: this.state.drink5_name,
+                    drink5pic: this.state.drink5_pic,
+                    drink6id: this.state.drink6_id,
+                    drink6name: this.state.drink6_name,
+                    drink6pic: this.state.drink6_pic,
+                };
+                let event_and_cust = Object.assign({}, event_data, cust_inf);
+                console.log(event_and_cust);
+                axios.post("/api/create_event/", event_and_cust)
                     .then(resp => {
                         console.log(resp);
                     })
@@ -289,9 +309,9 @@ class EventInfo extends Component {
         console.log(this.state);
         return (
             <div className="container-fluid cust-about max1024w">
-                <div className="cust-about-us ">
+                <div className="cust-about-us marg-lg-t140 marg-lg-b140 marg-sm-b50 marg-sm-t50">
                     <div className="col-lg-12 col-md-12">
-                        <div className="cust-about-form marg-lg-t140 marg-lg-b140 marg-sm-b50 marg-sm-t50">
+                        <div className="cust-about-form">
                             <h3><i>Event Information</i></h3>
                             <div className="row">
                                 <h5>Logged in as: {this.state.email}</h5>
@@ -307,12 +327,12 @@ class EventInfo extends Component {
                                     </div>
                                     <br />
                                     <div className="row">
-                                        <input type="text" placeholder='Event Date' name="event_date" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
-                                        <input type="text" placeholder='Event Strart Time' name="event_time" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
+                                        <input type="date" placeholder='Event Date' name="event_date" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
+                                        <input type="time" min="11:00" max="21:00" placeholder='Event Strart Time' name="event_time" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
                                         <input type="text" placeholder='Number of Participants' name="event_pax" onChange={this.handleInputChange} className="col-md-5 pad-lg-0 " />
                                     </div>
                                     <div className="row">
-                                        <div className='col-lg-12 wpc-header wpc-upcoming marg-lg-t95 marg-sm-t50'>
+                                        <div className='col-lg-12'>
                                             <h3>Select Six Cocktails</h3>
                                         </div>
                                     </div>
@@ -387,7 +407,7 @@ class EventInfo extends Component {
                                         </div>
                                     </div>
                                     <br />
-                                    <button id="saveevent" onClick={this.save_event}>Save Your Information</button>
+                                    <button id="saveevent" onClick={this.save_event}>Save Event Information</button>
                                     <br />
                                     {!this.state.isHidden && <textarea id="cust_info_msg">Customer Info Message</textarea>}
                                 </form>
@@ -403,9 +423,10 @@ class EventInfo extends Component {
                     overlayClassName=""
                 >
                     <div className="cust-about-form" id="drinkmodal">
+                        <h3>Search by name or ingredient</h3>
                         <div className="row rowcenter">
                             <div className="col-md-4 ">
-                                <h5>Search by drink name OR ingredient</h5>
+                                <h2>Name Search</h2>
                             </div>
                         </div>
                         <div className="row rowcenter">
@@ -415,8 +436,14 @@ class EventInfo extends Component {
                                     <input type="text" name="drinknamesearch" onChange={this.handleInputChange} placeholder='Drink Name' value={this.state.drinknamesearch} className="col-md-10 pad-lg-0 " />
                                     <div className="row">
                                         <div className="col-sm-12 text-center">
-                                            <a href="" id="namesearch" onClick={this.name_search} className="wpc-upcoming-reg ">Search</a>
-                                            <a href="" id="nameclear" onClick={this.name_clear} className="wpc-upcoming-reg ">Clear</a>
+                                            <a href="" id="namesearch" onClick={this.name_search} className="wpc-upcoming-reg buttonmargin">Search</a>
+                                            <a href="" id="nameclear" onClick={this.name_clear} className="wpc-upcoming-reg buttonmargin">Clear</a>
+                                        </div>
+                                    </div>
+
+                                    <div className="row rowcenter">
+                                        <div className="col-md-4 ">
+                                            <h2>Ingredient Search</h2>
                                         </div>
                                     </div>
                                     <div className="demo">
@@ -429,8 +456,8 @@ class EventInfo extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-sm-12 text-center">
-                                            <a href="" id="ingsearch" onClick={this.ing_search} className="wpc-upcoming-reg ">Search</a>
-                                            <a href="" id="ingclear" onClick={this.ing_clear} className="wpc-upcoming-reg ">Clear</a>
+                                            <a href="" id="ingsearch" onClick={this.ing_search} className="wpc-upcoming-reg buttonmargin ">Search</a>
+                                            <a href="" id="ingclear" onClick={this.ing_clear} className="wpc-upcoming-reg buttonmargin">Clear</a>
                                         </div>
                                     </div>
                                 </div>
@@ -439,6 +466,7 @@ class EventInfo extends Component {
                             </div>
                             <div className="col-md-1 " />
                             <div className="col-md-6 ">
+                                <h2>Click Large Image To Select</h2>
                                 {this.state.stuff
                                     ? <ImageGallery
                                         ref={i => this._imageGallery = i}
@@ -499,3 +527,6 @@ export default EventInfo;
 //            </div>
 //        </div>
 //    </div>
+
+//marg - lg - t140 marg - lg - b140 marg - sm - b50 marg - sm - t50
+//marg - lg - t95 marg - sm - t50 wpc-upcoming  wpc-header 

@@ -1,64 +1,33 @@
 // JavaScript source code
+// JavaScript source code
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => (
 
-    <div className="wpc-footer">
+    <div className="wpc-footer footer_marg">
+        <br />
         <div className="container pad-lg-0">
             <div className="row">
                 <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="wpc-footer-item marg-lg-t67 marg-lg-b90 marg-sm-t0 marg-sm-b0 marg-xs-t0">
+                    <div className="wpc-footer-item">
                         <a href="">
-
                             <div className="logo">
-                                <h2>Chicago</h2>
+                                <Link to="/"><img className="menulogo" src="/img/logo1.jpg" alt="Mix and Ming" /></Link>
                             </div>
                         </a>
-                        <span>Curabitur gravda fringilla orci eget auctor. Nulla facilisi. Pellentesque eget lipsum</span>
-                        <nav className="soc-net">
-                            <ul>
-                                <li>
-                                    <a href="" className='flaticon-social-1'></a>
-                                </li>
-                                <li>
-                                    <a href="" className="flaticon-social-media"></a>
-                                </li>
-                                <li>
-                                    <a href="" className='flaticon-social-2'></a>
-                                </li>
-                                <li>
-                                    <a href="" className='flaticon-camera'></a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <span>The best event concept ever!</span>
+
                     </div>
                 </div>
                 <div className="col-md-3 col-sm-6 col-xs-12">
                     <div className="wpc-footer-item marg-lg-t67 marg-lg-b90 marg-sm-t0 marg-sm-b0 marg-xs-t0">
                         <h5>contact us:</h5>
                         <ul>
-                            <li><span>3717 CedarWood Dr, Holiday Fl, 34691</span></li>
-                            <li><a href="http://wp.city/projects/chicago/"><span>+3 (555) 235 8620</span></a></li>
-                            <li><a href="http://wp.city/projects/chicago/"><span>marketing@email.com</span></a></li>
+                            <li><span>Sharon Hill PA USA</span></li>
+                            <li><a href="mailto:info@mixandming.com"><span>info@mixandming.com</span></a></li>
                         </ul>
-                    </div>
-                </div>
-                <div className="col-md-3 col-sm-6 col-xs-12">
-                    <div className="wpc-footer-item marg-lg-t67 marg-lg-b90 marg-sm-t0 marg-sm-b0 marg-xs-t0 wpc-work-time">
-                        <h5>Work time:</h5>
-                        <ul>
-                            <li><span>Monday - Friday</span><i>8AM - 2PM</i></li>
-                            <li><span>Saturday</span> <i> 10AM - 4PM</i></li>
-                            <li><span>Sunday </span> <i>11AM - 4PM</i></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="col-md-3 col-sm-6 col-xs-12 pad-lg-0">
-                    <div className="wpc-footer-item marg-lg-t65 marg-lg-b90 marg-sm-t20 marg-sm-b50 marg-xs-t0 wpc-twitter">
-                        <h5>from twitter:</h5>
-                        <span><a href="" className="flaticon-social-media" />@qwerty/>Lorem ipsum dolor sit amet, <br /> consectetur <i>#seeiusmod</i></span>
-                        <span className='wpc-i'>10 Sep, 2017</span>
                     </div>
                 </div>
                 <div className="col-xs-12">
@@ -75,3 +44,5 @@ const Footer = () => (
 );
 
 export default Footer;
+
+//marg - lg - t67 marg - lg - b90 marg - sm - t0 marg - sm - b0 marg - xs - t0

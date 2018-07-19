@@ -26,7 +26,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Requiring our routes
-require("./routes/cust-auth")(app, passport, db); //,passport);
+require("./routes/cust-auth")(app, passport, db);
+require("./routes/eventdb-api")(app, passport, db);
 //require("./routes/user-auth")(app, db);  //,passport);
 require("./routes/cocktaildb-api")(app);
 

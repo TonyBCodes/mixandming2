@@ -16,8 +16,8 @@ class CustStart extends Component {
     render() {
         return (
             <div className="container-fluid wpc-about">
-                <div className="row">
-                    <div className="wpc-about-us ">
+                <div className="row" id="top">
+                    <div className="wpc-about-us divcenter ">
                         <CustLog />
                         <CustReg />
                     </div>

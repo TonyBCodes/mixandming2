@@ -1,18 +1,18 @@
-/*------------------------------------------------------------------------------*/
-/*This is main CSS file that contains custom style rules used in this template*/
-/*------------------------------------------------------------------------------*/
-/* Template Name: Chicago */
-/* Version: 1.0 Initial Release */
-/* Build Date: 07-29-2017 */
-/* Author: wpbrothers */
-/* Website: wpbrothers */
-/* Copyright: (C) 2017 */
-/*-------------------------------------------------------------------------------*/
+------------------------------------------------------------------------------
+This is main CSS file that contains custom style rules used in this template
+------------------------------------------------------------------------------
+ Template Name: Chicago 
+ Version: 1.0 Initial Release 
+ Build Date: 07-29-2017 
+ Author: wpbrothers 
+ Website: wpbrothers 
+ Copyright: (C) 2017 
+-------------------------------------------------------------------------------
 
 
 
 
-/*------------------------------------------------------------------
+------------------------------------------------------------------
 [Table of contents]
 0.Preloader
 1. Text setting
@@ -34,12 +34,12 @@
 7.9 BLOG DETAILS PAGE
 8 Side bar to change style
 
--------------------------------------------------------------------*/
-/* Get Font Awesome from CDN */
+-------------------------------------------------------------------
+ Get Font Awesome from CDN 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
-/*--------------------------------------------------------------------------------------*/
-/* Preloader */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ Preloader 
+--------------------------------------------------------------------------------------
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700);
 @import url(https://fonts.googleapis.com/css?family=Merriweather);
 .load-wrap {
@@ -71,13 +71,13 @@
   width: 100%;
   height: 2px; }
 
-/*--------------------------------------------------------------------------------------*/
-/* TEXT SETTING */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ TEXT SETTING 
+--------------------------------------------------------------------------------------
 @font-face {
   font-family: 'DancingScriptOT';
-  src: url("../fonts/dancingscript-regular-webfont.eot");
-  src: url("../fonts/dancingscript-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/dancingscript-regular-webfont.woff2") format("woff2"), url("../fonts/dancingscript-regular-webfont.woff") format("woff"), url("../fonts/dancingscript-regular-webfont.ttf") format("truetype"), url("../fonts/dancingscript-regular-webfont.svg#dancing_script_otregular") format("svg");
+  src: url("/fonts/dancingscript-regular-webfont.eot");
+  src: url("/fonts/dancingscript-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/dancingscript-regular-webfont.woff2") format("woff2"), url("/fonts/dancingscript-regular-webfont.woff") format("woff"), url("/fonts/dancingscript-regular-webfont.ttf") format("truetype"), url("/fonts/dancingscript-regular-webfont.svg#dancing_script_otregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -96,18 +96,18 @@ h1, h2, h3, h4, h5, h6 {
 html.active {
   overflow-y: hidden; }
 
-/*----------------------------------------------------------------------*/
-/* TABS */
-/*----------------------------------------------------------------------*/
+----------------------------------------------------------------------
+ TABS 
+----------------------------------------------------------------------
 .tabs-item.active {
   display: block; }
 
 .tabs-item {
   display: none; }
 
-/*----------------------------------------------------------------------*/
-/* SWIPER */
-/*----------------------------------------------------------------------*/
+----------------------------------------------------------------------
+ SWIPER 
+----------------------------------------------------------------------
 .swiper-container {
   overflow: hidden;
   position: relative;
@@ -198,9 +198,9 @@ html.active {
     max-width:100%;
     height:auto;;
 }
-/*=================================*/
-/* Header */
-/*=================================*/
+=================================
+ Header 
+=================================
 .wpc-navigation {
     position: relative;
     display: inline-block;
@@ -343,12 +343,12 @@ html.active {
     .main-menu .sub-menu a:hover:after, .main-menu .sub-menu a:hover:before {
       display: none; }
 
-/* Active menu items */
+ Active menu items 
 .main-menu .current-menu-parent a,
 .main-menu .current-menu-item a {
   color: #000; }
 
-/* Show second and third menu levels */
+ Show second and third menu levels 
 @media screen and (min-width: 768px) {
   .main-menu .sub-menu li {
     display: block; }
@@ -359,7 +359,7 @@ html.active {
     left: 100%;
     top: 0; } }
 
-/* Responsive menu button */
+ Responsive menu button 
 .nav-menu-icon {
   position: fixed;
   left: 0;
@@ -370,7 +370,7 @@ html.active {
   z-index: 2;
   cursor: pointer; }
 
-/* Don`t reqiured */
+ Don`t reqiured 
 .wpc-navigation.active .nav-menu-icon i {
   background: none; }
 
@@ -384,7 +384,7 @@ html.active {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg); }
 
-/* End Don`t reqiured */
+ End Don`t reqiured 
 .nav-menu-icon i:before, .nav-menu-icon i:after {
   content: '';
   width: 32px;
@@ -412,7 +412,7 @@ html.active {
 .menu-item-has-children > a span {
   display: none; }
 
-/* Responsive menu */
+ Responsive menu 
 @media screen and (max-width: 768px) {
   .wpt-menu-form {
     display: none; }
@@ -487,9 +487,9 @@ html.active {
       -webkit-transform: translateX(0%);
       transform: translateX(0%); }
 
-/*--------------------------------------------------------------------------------------*/
-/* FOOTER */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ FOOTER 
+--------------------------------------------------------------------------------------
 .wpc-footer {
   margin: 0 90px;
   background: #fff url("../img/home1/footer-bg.jpg") 0 0 no-repeat;
@@ -633,9 +633,9 @@ html.active {
     letter-spacing: .2px;
     width: 100%; }
 
-/*----------------------------------------------------------------------*/
-/* BURGER */
-/*----------------------------------------------------------------------*/
+----------------------------------------------------------------------
+ BURGER 
+----------------------------------------------------------------------
 #nav-toggle {
   display: block;
   width: 28px;
@@ -677,9 +677,9 @@ html.active {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
 
-/*---------------------------------------------------------------------------------------*/
-/* GLOBAL SETTINGS */
-/*--------------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------------------
+ GLOBAL SETTINGS 
+--------------------------------------------------------------------------------------
 html, body {
   overflow-x: hidden; }
 
@@ -706,12 +706,12 @@ p {
   font-size: 14px;
   font-weight: 400; }
 
-/*--------------------------------------------------------------------------------------*/
-/* CONTENT */
-/*--------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------*/
-/* HOME PAGE*/
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ CONTENT 
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+ HOME PAGE
+--------------------------------------------------------------------------------------
 .wpc-swiper {
   width: 100%;
   padding: 0 90px;
@@ -774,8 +774,8 @@ p {
     word-spacing: 1px;
     letter-spacing: 0.2px; }
 
-/*first block end*/
-/*second block start*/
+first block end
+second block start
 .wpc-about-title {
   float: right;
   width: 100%;
@@ -905,8 +905,8 @@ p {
       background: #c7a75b;
       color: #fff; }
 
-/*second block end*/
-/*third block star*/
+second block end
+third block star
 .wpc-our-service {
   position: relative;
   margin: 0 90px;
@@ -1018,8 +1018,8 @@ p {
 .wpc-service-logo3 {
   background-image: url("../img/service-icon3.png"); }
 
-/*third block end*/
-/*four block start*/
+third block end
+four block start
 .wpc-proposes.wpc-header {
   text-align: center; }
   .wpc-proposes.wpc-header h2 {
@@ -1119,8 +1119,8 @@ p {
       color: #c7a75b;
       font-weight: 700; }
 
-/*third block end*/
-/*fourth block star*/
+third block end
+fourth block star
 .wpt-dish-bg {
   background: #fff url("../img/home1/dishes_bg.jpg") 0 0 no-repeat;
   margin: 0  90px;
@@ -1298,8 +1298,8 @@ p {
   position: relative;
   margin-bottom: 20px; }
 
-/*fourth block end*/
-/*fifth block start*/
+fourth block end
+fifth block start
 .wpc-info-block-body {
   position: relative;
   z-index: 2; }
@@ -1349,8 +1349,8 @@ p {
     display: inline-block;
     word-spacing: 2px; }
 
-/*fifth block end*/
-/*sixth block start*/
+fifth block end
+sixth block start
 .wpc-info-block2 {
   padding: 0;
   text-align: center; }
@@ -1399,8 +1399,8 @@ p {
 .wpc-info-block2_text {
   padding-left: 40px; }
 
-/*sixth block end*/
-/*seventh block start*/
+sixth block end
+seventh block start
 .wpc-our-menu {
   margin: 0 90px;
   text-align: center;
@@ -1524,11 +1524,11 @@ p {
     font-weight: 400;
     line-height: 20px; }
 
-/*seventh block end*/
-/*eighth block start*/
-/*============================*/
-/* // HOME PAGE 2           */
-/*============================*/
+seventh block end
+eighth block start
+============================
+ // HOME PAGE 2           
+============================
 .wpc-our-service-style2 {
   background: url("../img/home2/service_bg2.jpg") 0 0 no-repeat;
   background-size: cover; }
@@ -1588,7 +1588,7 @@ p {
   .wpc-header-menu-light li a {
     color: #fff; }
 
-/*first block start*/
+first block start
 .wpc-swiper-h2 {
   padding: 0; }
   .wpc-swiper-h2 .pagination {
@@ -1613,8 +1613,8 @@ p {
   .wpc-swiper-h2 h3 {
     padding-top: 10px; }
 
-/*first block end*/
-/*second block start*/
+first block end
+second block start
 .wpc-discover {
   background: #fff url("../img/home2/discover_bg.jpg") center bottom no-repeat;
   background-size: contain; }
@@ -1754,8 +1754,8 @@ p {
   .wpc-info-b3-item:last-child {
     margin-right: 25px; }
 
-/*second block end*/
-/*third block star*/
+second block end
+third block star
 .wpc-select-form {
   padding-left: 35px;
   text-align: center; }
@@ -1791,8 +1791,8 @@ p {
   vertical-align: top;
   margin-top: 0;
   margin-bottom: 0;
-  /* Firefox 19+ */
-  /* Firefox 18- */ }
+   Firefox 19+ 
+   Firefox 18-  }
   .wpc-select-form-item1 ::-webkit-input-placeholder {
     color: #333; }
   .wpc-select-form-item1 ::-moz-placeholder {
@@ -1902,8 +1902,8 @@ p {
       color: #c7a75b;
       font-weight: 700; }
 
-/*third block end*/
-/*four block start*/
+third block end
+four block start
 .wpc-header-our h3 {
   margin-bottom: 100px; }
 
@@ -1959,8 +1959,8 @@ p {
     font-weight: 700;
     line-height: 22px; }
 
-/*third block end*/
-/*fourth block star*/
+third block end
+fourth block star
 .wpc-testi {
   text-align: center; }
   .wpc-testi h2 {
@@ -2034,8 +2034,8 @@ p {
   overflow: hidden;
   position: relative; }
 
-/*fourth block end*/
-/*fifth block start*/
+fourth block end
+fifth block start
 .wpc-upcoming {
   text-align: center; }
   .wpc-upcoming h3 {
@@ -2148,8 +2148,8 @@ p {
     opacity: .8;
     color: #fff; }
 
-/*fifth block end*/
-/*sixth block start*/
+fifth block end
+sixth block start
 .wpt-map {
   text-align: center; }
   .wpt-map h3 {
@@ -2175,9 +2175,9 @@ p {
   margin: 0 90px;
   box-sizing: border-box; }
 
-/*--------------------------------------------------------------------------------------*/
-/* HOME PAGE 3 */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ HOME PAGE 3 
+--------------------------------------------------------------------------------------
 .wpc-about-menu-img {
   float: right; }
 
@@ -2283,8 +2283,8 @@ p {
   .wpc-about-menu-item i {
     display: block; }
 
-/*sixth block end*/
-/*seventh block start*/
+sixth block end
+seventh block start
 .wpc-testi-h3 {
   position: relative;
   margin-left: 90px;
@@ -2363,8 +2363,8 @@ p {
       letter-spacing: .5px;
       word-spacing: 2px; }
 
-/*seventh block end*/
-/*eighth block start*/
+seventh block end
+eighth block start
 .wpc-chef-menu h3 {
   margin-top: 5px;
   margin-bottom: 5px; }
@@ -2431,11 +2431,11 @@ p {
     font-weight: 400;
     line-height: 32px; }
 
-/*eighth block end*/
-/*ninth block start*/
-/*--------------------------------------------------------------------------------------*/
-/* BLOG PAGE */
-/*--------------------------------------------------------------------------------------*/
+eighth block end
+ninth block start
+--------------------------------------------------------------------------------------
+ BLOG PAGE 
+--------------------------------------------------------------------------------------
 .wpc-blog-h3 {
   text-align: center; }
   .wpc-blog-h3 h3 {
@@ -2544,8 +2544,8 @@ p {
       line-height: 40px;
       text-transform: uppercase; }
 
-/*ninth block end*/
-/*tenth block start*/
+ninth block end
+tenth block start
 .wpc-facts {
   margin-left: auto;
   margin-right: auto;
@@ -2593,9 +2593,9 @@ p {
   letter-spacing: 2px;
   text-transform: uppercase; }
 
-/*--------------------------------------------------------------------------------------*/
-/* ABOUT PAGE */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ ABOUT PAGE 
+--------------------------------------------------------------------------------------
 .wpc-story-text.wpc-info-block2 .wpc-header {
   padding-left: 0; }
   .wpc-story-text.wpc-info-block2 .wpc-header h3 {
@@ -2615,8 +2615,8 @@ p {
 .wpc-story-text-img {
   margin-top: 35px; }
 
-/*first block end*/
-/*second block start*/
+first block end
+second block start
 .wpc-team {
   text-align: center; }
   .wpc-team h2 {
@@ -2711,8 +2711,8 @@ p {
     display: inline-block;
     margin: auto; }
 
-/*second block end*/
-/*third block star*/
+second block end
+third block star
 .wpc-info-block4 {
   margin-left: 90px;
   margin-right: 90px;
@@ -2768,9 +2768,9 @@ p {
   position: relative;
   z-index: 2; }
 
-/*--------------------------------------------------------------------------------------*/
-/* CONTACT PAGE */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ CONTACT PAGE 
+--------------------------------------------------------------------------------------
 .wpc-contact-form form {
   max-width: 615px; }
 
@@ -2845,9 +2845,9 @@ p {
   margin-left: 20px;
   height: 930px; }
 
-/*--------------------------------------------------------------------------------------*/
-/* FOOD MENU PAGE */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ FOOD MENU PAGE 
+--------------------------------------------------------------------------------------
 .wpc-food-menu {
   margin-left: 90px;
   margin-right: 90px;
@@ -3129,9 +3129,9 @@ p {
 .wpt-dish-bg.wpc-food-menu2 {
   background-size: cover !important; }
 
-/*--------------------------------------------------------------------------------------*/
-/* FOOD MENU PAGE 2 */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ FOOD MENU PAGE 2 
+--------------------------------------------------------------------------------------
 .wpc-food-menu2-about {
   text-align: left; }
   .wpc-food-menu2-about h3:after {
@@ -3275,9 +3275,9 @@ p {
 .wpc-food-map h3 {
   margin-bottom: 135px; }
 
-/*--------------------------------------------------------------------------------------*/
-/* BLOG DETAILS PAGE */
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+ BLOG DETAILS PAGE 
+--------------------------------------------------------------------------------------
 .wpc-blog-post h3 {
   color: #333;
   font-size: 35px;
@@ -3633,7 +3633,7 @@ p {
 .open > .dropdown-toggle.btn-info:hover {
   background-color: transparent; }
 
-/*==========  Desktop First Method  ==========*/
+==========  Desktop First Method  ==========
 @media (min-width: 1801px) {
   .wpc-chef-menu-text p {
     display: inline-block;
@@ -3684,7 +3684,7 @@ p {
     margin-right: auto; }
   .wpc-select-form {
     padding-left: 0; }
-  /*home3*/
+  home3
   .wpc-chef-menu-text {
     padding-left: 10px;
     padding-right: 10px; }
@@ -3701,7 +3701,7 @@ p {
   .wpc-product-img {
     text-align: center; } }
 
-/* Large Devices, Wide Screens */
+ Large Devices, Wide Screens 
 @media only screen and (max-width: 1400px) {
   .wpc-swiper .swiper-slide {
     padding: 150px 0; } }
@@ -3838,7 +3838,7 @@ p {
     right: 0;
     margin-left: auto;
     margin-right: auto; }
-  /*home 3*/
+  home 3
   .wpc-chef-menu-text span {
     display: block; }
   .wpc-info-block4 {
@@ -3910,7 +3910,7 @@ p {
   .wpc-food-menu2-bg1 {
     background-image: none !important; } }
 
-/* Medium Devices, Desktops */
+ Medium Devices, Desktops 
 @media only screen and (max-width: 991px) {
   .wpc-upcoming-head {
     background-size: cover;
@@ -4074,7 +4074,7 @@ p {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto; }
-  /*home3*/
+  home3
   .wpc-about-menu-img {
     display: none; }
   .wpc-testi-h3 .wpc-testi-logo {
@@ -4102,7 +4102,7 @@ p {
     display: inline-block; }
   .wpc-story-img {
     display: none; }
-  /*contact*/
+  contact
   .wpc-contact-form form {
     display: block;
     margin-left: auto;
@@ -4165,7 +4165,7 @@ p {
   .wpc-food-menu2-bg2 .wpc-food-menu2-chef {
     margin-left: auto; } }
 
-/* Small Devices, Tablets */
+ Small Devices, Tablets 
 @media only screen and (max-width: 768px) {
   .wpc-map {
     position: relative; }
@@ -4407,7 +4407,7 @@ p {
     padding-right: 15px; }
   .wpc-find {
     margin-bottom: 50px; }
-  /*contact*/
+  contact
   .wpc-contact-form,
   .wpc-contact-map {
     margin-left: 0;
@@ -4467,7 +4467,7 @@ p {
     color: #000; } }
 
 @media only screen and (max-width: 650px) {
-  /*// home 1*/
+  // home 1
   .wpc-swiper h3 {
     font-size: 50px; }
   .wpc-swiper p {
@@ -4536,7 +4536,7 @@ p {
   .wpc-info-block6:after {
     display: none; } }
 
-/* Extra Small Devices, Phones */
+ Extra Small Devices, Phones 
 @media only screen and (max-width: 480px) {
   .wpc-dishes-logo {
     width: 100%;
@@ -4592,7 +4592,7 @@ p {
     padding-bottom: 0; }
   .wpc-service-item {
     width: 100%; }
-  /*home 3*/
+  home 3
   .wpc-blog-h3-item {
     box-sizing: border-box; }
   .wpc-info-block6 .wpc-info-price, .wpc-info-block6 .wpc-header {
@@ -4623,7 +4623,7 @@ p {
   .wpc-mains h5 {
     font-size: 18px; } }
 
-/* Custom, iPhone Retina */
+ Custom, iPhone Retina 
 @media screen and (max-height: 480px) {
   .wpc-swiper .swiper-slide {
     padding: 50px  0; } }
@@ -5285,8 +5285,8 @@ p {
 h3.after-center:after {
   right: 0 !important; }
 
-/*--------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 @media (min-width: 1200px) {
   .wpc-no-fluid {
     width: 1200px;
