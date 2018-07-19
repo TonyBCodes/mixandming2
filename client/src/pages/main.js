@@ -9,6 +9,7 @@ import UserRegister from "./usr_register";
 import CustInfo from "./cust_info";
 import EventInfo from "./event_info";
 import CustLogin from './cust_login';
+import ConfirmEventInfo from './confirm_event_info';
 
 const Main = () => (
     <main>
@@ -19,6 +20,7 @@ const Main = () => (
             <Route exact path='/cust_start' component={CustStart} />
             <Route exact path='/cust_info/:email' component={CustInfo} />
             <Route exact path='/event_info/:email' component={EventInfo} />
+            <Route exact path='/confirm_event_info/:eventnum' component={ConfirmEventInfo}/>
             <Route path='/cust_login/:failed' component={CustLogin} />
         </Switch>
     </main>

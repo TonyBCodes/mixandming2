@@ -75,39 +75,34 @@ class Home extends Component {
                                                 <div className="wpc-service-logo wpc-service-logo1"></div>
                                                 <h3>Mix and Ming Event</h3>
                                                 <p>2 Hour, bartender led, Mix and Ming event. </p>
-                                                <span>On orders <i>over $50 Free</i></span>
                                             </div>
                                         </div>
                                         <div className="swiper-slide">
                                             <div className="wpc-service-item marg-lg-t185">
                                                 <div className="wpc-service-logo wpc-service-logo2"></div>
-                                                <h3>loundge zone</h3>
-                                                <p>Nullam scelerisque justo non enim elementum enenatis fauc</p>
-                                                <span>works to <i>02-00 everyday</i></span>
+                                                <h3>Bartending Service</h3>
+                                                <p>Add on bartending service to extend our services for the duration of your event.</p>
                                             </div>
                                         </div>
                                         <div className="swiper-slide">
                                             <div className="wpc-service-item marg-lg-t185">
                                                 <div className="wpc-service-logo wpc-service-logo3"></div>
-                                                <h3>wine list</h3>
-                                                <p>Nullam scelerisque justo non enim elementum enenatis fauc</p>
-                                                <span>more than <i>100 positions</i></span>
+                                                <h3>Event Customization</h3>
+                                                <p>We can customize our product to align with your event type.</p>
                                             </div>
                                         </div>
                                         <div className="swiper-slide">
                                             <div className="wpc-service-item marg-lg-t185">
                                                 <div className="wpc-service-logo wpc-service-logo3"></div>
-                                                <h3>wine list</h3>
-                                                <p>Nullam scelerisque justo non enim elementum enenatis fauc</p>
-                                                <span>more than <i>100 positions</i></span>
+                                                <h3>Cigar Service</h3>
+                                                <p>Nothing pairs with a good drink like a good cigar.  We can provide that also.</p>
                                             </div>
                                         </div>
                                         <div className="swiper-slide">
                                             <div className="wpc-service-item marg-lg-t185">
                                                 <div className="wpc-service-logo wpc-service-logo3"></div>
-                                                <h3>wine list</h3>
-                                                <p>Nullam scelerisque justo non enim elementum enenatis fauc</p>
-                                                <span>more than <i>100 positions</i></span>
+                                                <h3>Theme Drinks</h3>
+                                                <p>In addition to our standard menu of drinks, we can work with you tailor a cocktail for your occasion.</p>
                                             </div>
                                         </div>
                                     </div>

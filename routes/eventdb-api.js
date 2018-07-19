@@ -12,10 +12,10 @@ module.exports = function (app, passport, db) {
         db.Event.create({
             cust_id: req.body.cust_id,
             user_id: null,
-            ev_code:"555",
+            ev_code: Math.floor(Math.random() * 10000).toString(),
             ev_name: req.body.name,
             ev_date: req.body.date,
-            ev_time: req.body.date+" "+req.body.time,
+            ev_time: req.body.date + " " + req.body.time,
             ev_pax: req.body.pax,
             ev_drink1: req.body.drink1id,
             ev_drink2: req.body.drink2id,
@@ -46,11 +46,29 @@ module.exports = function (app, passport, db) {
             ev_pymt_suc_code: null,
             ev_pymt_timestamp: null,
             ev_status: "planning"
+        })
+            .then(event => {
+                console.log(event);
+                res.send(event);
+            })
+            .catch(function (err) {
+                console.log(err);
+                res.json(err);
+            });
+    });
+
+    //Retrieve event information using event id
+    app.get("/api/get_event", function (req, res) {
+        console.log("Body************  ", req.body);
+        db.Event.findOne({
+            where: { ev_id: req.body.searchTerm }
+        }).then(event => {
+            //if (err) { console.log(err); return done(err); }
+            console.log(event);
+            res.json(event);
         }).catch(function (err) {
             console.log(err);
             res.json(err);
         });
     });
-    
-
 };
