@@ -35,9 +35,9 @@ require("./routes/cocktaildb-api")(app);
 // Define any API routes before this runs
 app.get("*", function (req, res) {
     //use this in development
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+   // res.sendFile(path.join(__dirname, "./client/public/index.html"));
     //change to this in production
-    //res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 passport.use(new LocalStrategy({
