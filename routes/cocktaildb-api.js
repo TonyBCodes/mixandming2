@@ -1,5 +1,6 @@
 // JavaScript source code
 const axios = require("axios");
+//import axios from 'axios';
 require("dotenv");
 
 APIKey = process.env.COCKTAILDB_API_KEY;
@@ -14,8 +15,10 @@ module.exports = function (app) {
         console.log(APIKey);
         axios.get(`https://www.thecocktaildb.com/api/json/v1/${APIKey}/lookup.php?i=${searchTerm}`)
             .then((results) => {
-                const data = results.data.results;
-                res.json(data);
+                console.log(results.data.drinks);
+                let info = results.data.drinks;
+                res.json(info);
+                console.log(info);
             })
             .catch(err => { console.log(err); res.end() });
     });

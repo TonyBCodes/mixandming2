@@ -58,10 +58,9 @@ module.exports = function (app, passport, db) {
     });
 
     //Retrieve event information using event id
-    app.get("/api/get_event", function (req, res) {
-        console.log("Body************  ", req.body);
+    app.get("/api/get_event/:search_id", function (req, res) {
         db.Event.findOne({
-            where: { ev_id: req.body.searchTerm }
+            where: { ev_id: req.params.search_id }
         }).then(event => {
             //if (err) { console.log(err); return done(err); }
             console.log(event);
